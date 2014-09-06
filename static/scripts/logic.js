@@ -4,27 +4,29 @@
 * @return object containing query information
 */
 var fpObj = function(limit, radius, lat, long_) {
-    var poo = 0;
     var data = {limit: limit,
                 radius: radius,
                 lat: lat,
                 'long' : long_};
+    var hooplah;
 
     $.getJSON("http://localhost:5000/request", 
         data, function(result) {
             console.log('hello');
-            poo = result;
-            console.log(result);
+        
+            hooplah = questionTree(result);
+                console.log(hooplah);
+
         });
-    return poo;
+    return hooplah;
 };
 
 /*
     Given a Food Picker JS object, generate a binary decision tree
     that contains the questions being used by Food Picker.
 */
-var questionTree = function(fpObj) {
-    return 0;
+function questionTree(fpObj) {
+    return questionNode(fpObj.businesses);
 };
 
 var updateTable = function(table, candidate) {
@@ -53,8 +55,7 @@ var containsCategory = function(questionCategory, candidate) {
     Given a chunk of a Food Picker JS object, create one node of
     the binary decision tree.
 */
-var questionNode = function(candidates) {
-
+function questionNode(candidates) {
     var totalCount = candidates.length;
 
     if (totalCount == 0) {
@@ -92,10 +93,15 @@ var questionNode = function(candidates) {
         }
     }
 
+    console.log('yes');
+    console.log(yes.length);
+    console.log('no');
+    console.log(no.length);
+
     return {
         category: category,
-        yes: yes,
-        no: no,
+        yes: questionNode(yes),
+        no: questionNode(no),
         candidates: candidates
     };
 
