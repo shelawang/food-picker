@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request
 
 import argparse
@@ -46,7 +48,7 @@ def api_call():
 
     term = 'food'
 
-    encoded_params = "term={0}&bounds={1},{2}|{3},{4}".format(term, sw_lat, sw_long, ne_lat, ne_long, limit) 
+    encoded_params = "term={0}&bounds={1},{2}|{3},{4}&limit={5}".format(term, sw_lat, sw_long, ne_lat, ne_long, limit)
     
     url = 'http://{0}{1}?{2}'.format(host, path, encoded_params)
 
@@ -76,4 +78,5 @@ def api_call():
     return response
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
