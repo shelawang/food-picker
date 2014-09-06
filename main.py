@@ -21,11 +21,10 @@ TOKEN_SECRET = 'TBE0BGBLhDKprgT-Lt8LvJU5mkQ'
 @app.route('/request')
 def api_call():
     
-    print('butt')
+    # return 'g'
 
     host = 'api.yelp.com'
     path = '/v2/search'
-
     limit = request.args.get('limit') # limit in number of restaurants
     radius = request.args.get('radius') # radius from center in miles
     lat = request.args.get('lat') # center latitude
@@ -71,10 +70,9 @@ def api_call():
 
     conn = urllib2.urlopen(signed_url, None)
     try:
-        response = str(json.loads(conn.read()))
+        response = json.dumps(json.loads(conn.read()))
     finally:
         conn.close()
-    print str(response)
     return response
 
 if __name__ == '__main__':
