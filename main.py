@@ -9,6 +9,8 @@ import urllib2
 
 import oauth2
 
+import math
+
 app = Flask(__name__)
 
 CONSUMER_KEY = 'H85zQotPvyaafxY-wFjJOg'
@@ -22,20 +24,32 @@ def request():
     host = 'api.yelp.com'
     path = '/v2/search'
 
-    limit = request.args.get('limit')
-    radius = request.args.get('radius')
-    lat = request.args.get('lat')
-    long_ = request.args.get('long')
+    limit = request.args.get('limit') # limit in number of restaurants
+    radius = request.args.get('radius') # radius from center in miles
+    lat = request.args.get('lat') # center latitude
+    long_ = request.args.get('long') # center longitude
 
-    url_params = {
-        'limit': limit,
-        'radius_filter': radius,
-        'location': lat + ',' + long_
-    }
+    # test data
+    # limit = '10'
+    # radius = '10'
+    # lat = '37.77493'
+    # long_ = '-122.419415'
 
-    encoded_params = urllib.urlencode(url_params)  
+    delta_lat = int(radius) / 69.11
+    delta_long = int(radius) / (69.11 * math.cos(float(lat)))
+
+    sw_lat = str(float(lat) - delta_lat)
+    sw_long = str(float(long_) - delta_long)
+    ne_lat = str(float(lat) + delta_lat)
+    ne_long = str(float(long_) + delta_long)
+
+    term = 'food'
+
+    encoded_params = "term={0}&bounds={1},{2}|{3},{4}".format(term, sw_lat, sw_long, ne_lat, ne_long, limit) 
     
     url = 'http://{0}{1}?{2}'.format(host, path, encoded_params)
+
+    print url
 
     consumer = oauth2.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
     oauth_request = oauth2.Request('GET', url, {})
