@@ -7,16 +7,18 @@ var questionTree = function(limit, radius, lat, long_) {
                 radius: radius,
                 lat: lat,
                 'long' : long_};
-    var ret;
+    var businesses;
+    $.ajax({
+        dataType: "json",
+        url: "http://localhost:5000/request",
+        data: data,
+        success: function(result) {        
+            businesses = result.businesses;
+        },
+        async: false
+    });
 
-    $.getJSON("http://localhost:5000/request", 
-        data, function(result) {
-            console.log('hello');
-        
-            ret = questionNode(result.businesses);
-            console.log(ret);
-        });
-    return ret;
+    return questionNode(businesses);
 };
 
 /*
@@ -32,7 +34,6 @@ function questionNode(candidates) {
     var no = [];
 
     if (totalCount == 1) {
-        console.log('poop');
         return {
             flag: '',
             question: '',
@@ -57,8 +58,6 @@ function questionNode(candidates) {
         flag = 'name';
 
         var nameRand = (Math.random() * totalCount) | 0;
-        console.log(candidates);
-        console.log(nameRand);
         question = candidates[nameRand].name;
 
         yes = [candidates[nameRand]];
@@ -128,4 +127,4 @@ function containsCategory(questionCategory, candidate) {
     return false;
 };
 
-questionTree(10, 10, 37.77493, -122.419415);
+//questionTree(10, 10, 37.77493, -122.419415);

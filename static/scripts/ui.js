@@ -5,9 +5,12 @@ var colours = [
     ['#FFB347', '#F29F41'],
     ['#36a564', '#5eb783'],
     ['#F1E05C', '#f3e67c']
-]
+];
 
 var curInterval;
+
+var tree;
+var curTreeNode;
 
 function startCounter() {
     var TIME = 3;
@@ -31,8 +34,17 @@ function next() {
     transition();
 }
 
+function showEnd(restaurant) {
+    $('body').append(end({restaurant: restaurant}));
+}
+
 function addQ() {
-    $('body').append(question({q1: 'foo', q2: 'bar'}));
+    if (curTreeNode.candidates.length == 1) {
+        showEnd(curTreeNode.candidates[0].name);
+    } 
+    $('body')
+        .append(question({q1: curTreeNode.question, q2: "No " + curTreeNode.question}));
+
 
     // Change the colour
     var rand = Math.random() * colours.length | 0;
@@ -62,12 +74,14 @@ function addQ() {
     // Listeners
     top.on('click', function() {
         clearInterval(curInterval);
+        curTreeNode = curTreeNode.yes;
         next();
         startCounter();
     });
 
     bottom.on('click', function() {
         clearInterval(curInterval);
+        curTreeNode = curTreeNode.no;
         next();
         startCounter();
     });
@@ -103,9 +117,17 @@ function transition() {
     }
 }
 
-var question = Handlebars.compile($("#entry-template").html());
+var question = Handlebars.compile($("#question-temp").html());
+var main = Handlebars.compile($("#main-temp").html());
+var end = Handlebars.compile($("#end-temp").html());
 
-$(document).ready(function() {
+function showMain() {
+    $('body').append(main);
+
+
+}
+
+function start() {
     addQ();
     $('.old').removeClass('old').addClass('cur');
 
@@ -117,6 +139,20 @@ $(document).ready(function() {
     mp3.load();
     document.documentElement.appendChild(mp3);
     mp3.play();
+}
+
+$(document).ready(function() {
+    // showMain();
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            tree = questionTree(10, 10, position.coords.latitude, position.coords.longitude);
+            curTreeNode = tree;
+            start();
+        });
+    }
+    else {
+        alert("No location support");
+    }
 });
 
 document.ontouchmove = function(event){
