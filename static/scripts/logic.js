@@ -1,32 +1,23 @@
-var oauth = OAuth({
-    consumer: {
-        public: 'D_JlSCNIKvjpJmpr9rl4TQ',
-        secret: 'pzQlZmIGppUctcdx43ycXwp4uGc'
-    },
-
-    signature_method: 'HMAC-SHA1'
-});
-
-var request_data = {
-    url: 'http://api.yelp.com/v2/search?term=cream+puffs&location=San+Francisco',
-    method: 'POST',
-    data: {
-        status: 'faq!'
-    }
+/*
+    Given a set of search parameters, do a call to the Yelp API
+    and return the resulting Food Picker JS object.
+*/
+var fpObj = function(limit, radius, lat, long) {
+    return 0;
 };
 
-var token = {
-    public: 'LlBmdceivg1QCFZOPo8PsGapF7iDN9uT',
-    secret: '5QmbdShacxjSEDYrwXU55DLx_bM'
+/*
+    Given a Food Picker JS object, generate a binary decision tree
+    that contains the questions being used by Food Picker.
+*/
+var questionTree = function(fpObj) {
+
 };
 
-oauth.authorize(request_data, token);
+/*
+    Given a chunk of a Food Picker JS object, create one node of
+    the binary decision tree.
+*/
+var questionNode = function(fpObjRemaining) {
 
-$.ajax({
-    url: request_data.url,
-    type: request_data.method,
-    data: oauth.authorize(request_data, token)
-}).done(function(data) {
-    //process your data here
-    alert('poo');
-});
+};
