@@ -6,12 +6,14 @@ var colours = [
     ['#F56991', '#FC84A6']
 ]
 
+var curInterval;
+
 function startCounter() {
     var TIME = 3;
     var count = TIME;
-    setInterval(function() {
+    curInterval = setInterval(function() {
         if (count > 0) {
-            $('.cur .p-bar').css('width', '100%');
+            $('.cur .p-bar').css('width', 0);
             $('#counter').css('opacity', 1);
             $('#counter').text(count);
             count--;
@@ -53,6 +55,20 @@ function addQ() {
 
         top.height(winHeight/2);
         bottom.height(winHeight/2);
+    });
+
+
+    // Listeners
+    top.on('click', function() {
+        clearInterval(curInterval);
+        next();
+        startCounter();
+    });
+
+    bottom.on('click', function() {
+        clearInterval(curInterval);
+        next();
+        startCounter();
     });
 
     top.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", 
@@ -101,3 +117,7 @@ $(document).ready(function() {
     document.documentElement.appendChild(mp3);
     mp3.play();
 });
+
+document.ontouchmove = function(event){
+    event.preventDefault();
+}
