@@ -3,7 +3,8 @@ var colours = [
     ['#69BEFA', '#8ACEFF'],
     ['#B7F7C1', '#B0E8AB'],
     ['#FFB347', '#F29F41'],
-    ['#F56991', '#FC84A6']
+    ['#36a564', '#5eb783'],
+    ['#F1E05C', '#f3e67c']
 ]
 
 var curInterval;
