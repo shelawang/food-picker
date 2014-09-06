@@ -1,0 +1,94 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+}
+
+.card {
+    transition: left 0.5s, right 0.5s, top 0.5s, bottom 0.5s;
+    position: relative;
+}
+
+.top {
+    background-color: #FF5757;
+}
+
+.bottom {
+    background-color: #FFCB52;
+}
+
+.cur {
+    z-index: 1000;
+}
+
+#question {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.row {
+    position: relative;
+}
+
+@keyframes fadeAndScale {
+    from {
+        opacity: 0;
+        transform: scale(.9, .9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+#counter {
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    margin: -60px 0 0 -60px;
+    text-align: center;
+    line-height: 120px;
+    font-size: 60px;
+    z-index: 100;
+    text-shadow: 1px 1px 0px rgba(100, 100, 100, 1);
+}
+
+h1 {
+    transform-origin: 50% 100%;
+    animation-duration: 3s;
+    animation-name: fadeAndScale;
+    animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
+}
+
+.answer {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -100px;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.p-bar {
+    height: 6px;
+    width: 0;
+    position: absolute;
+    top: 50%;
+    margin-top: -3px;
+    background-color: #fff;
+    transition: width 3s linear;
+}
