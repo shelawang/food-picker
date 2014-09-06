@@ -10,7 +10,7 @@ var questionTree = function(limit, radius, lat, long_) {
     var businesses;
     $.ajax({
         dataType: "json",
-        url: "http://localhost:5000/request",
+        url: "http://food-picker.herokuapp.com/request",
         data: data,
         success: function(result) {        
             businesses = result.businesses;
