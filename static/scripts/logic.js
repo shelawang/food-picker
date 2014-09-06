@@ -3,22 +3,29 @@
     and return the resulting Food Picker JS object.
 * @return object containing query information
 */
-var fpObj = function(limit, radius, lat, long_) {
-    var data = {limit: limit,
-                radius: radius,
-                lat: lat,
-                'long' : long_};
+var fpObj = function(limit, radius, lat, long_, cat) {
+  var data;
+    data = {limit: limit,
+            radius: radius,
+            lat: lat,
+            'long' : long_};
+
+  //we have a category filter
+  if (arguments.length === 5) {
+    data.cat = cat;
+
+  }
     var hooplah;
 
     $.getJSON("http://localhost:5000/request", 
         data, function(result) {
             console.log('hello');
-        
-            hooplah = questionTree(result);
-                console.log(hooplah);
+            console.log(result);
+            // hooplah = questionTree(result);
+                // console.log(hooplah);
 
         });
-    return hooplah;
+    // return hooplah;
 };
 
 /*
@@ -106,6 +113,6 @@ function questionNode(candidates) {
     };
 
 };
-fpObj(10, 10, 37.77493, -122.419415);
+fpObj(10, 10, 37.77493, -122.419415, 'vegetarian');
 
 
