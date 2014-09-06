@@ -19,8 +19,10 @@ TOKEN = 'Awp8bAxSd7p_dntg10i9jQEYGqIB1gdo'
 TOKEN_SECRET = 'TBE0BGBLhDKprgT-Lt8LvJU5mkQ'
 
 @app.route('/request')
-def request():
+def api_call():
     
+    print('butt')
+
     host = 'api.yelp.com'
     path = '/v2/search'
 
@@ -72,7 +74,7 @@ def request():
         response = str(json.loads(conn.read()))
     finally:
         conn.close()
-
+    print str(response)
     return response
 
 if __name__ == '__main__':
