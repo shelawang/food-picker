@@ -96,7 +96,7 @@ $(document).ready(function() {
 
     // Music
     var mp3 = document.createElement("audio");
-    mp3.setAttribute('src', 'http://free-loops.com/6679-bongo-drums.html');
+    mp3.setAttribute('src', 'runamok.mp3');
     mp3.load();
     document.documentElement.appendChild(mp3);
     mp3.play();
