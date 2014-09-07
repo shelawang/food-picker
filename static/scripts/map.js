@@ -14,11 +14,11 @@ var TEST_RESTAURANTS = [
 ];
 
 var TEST_TREE = {
-    "category": "Starts with 4",
+    "question": "Starts with 4",
     "yes": {
-        "category": "Raghav lives there",
+        "question": "Raghav lives there",
         "yes": {
-            "category": "",
+            "question": "",
             "yes": {},
             "no": {},
             "candidates": [TEST_RESTAURANTS[0]],
@@ -58,7 +58,7 @@ Initializes the map and sets listeners.
 
 Arguments:
     tree - A tree whose nodes have the following fields:
-              category - The category being asked
+              question - The question being asked
               yes - A node
               no - A node
               candidates - An array of restaurants that still considered
@@ -190,12 +190,12 @@ function addListeners() {
 
         var option1;
         var option2;
-        var category;
+        var question;
 
         if (currentStep > 0) {
-            category = steps[currentStep-1].category
-            option1 = category;
-            option2 = "No " + category;
+            question = steps[currentStep-1].question
+            option1 = question;
+            option2 = "No " + question;
         } else {
             option1 = instructions;
             option2 = "";
