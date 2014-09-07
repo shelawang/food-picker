@@ -158,6 +158,16 @@ h1 {
     color: #fff;
 }
 
+#map {
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index: 999;
+    background-color: #8670AB;
+}
+
 .btn {
     margin-bottom: 18px;
     padding: 12px;
@@ -214,3 +224,13 @@ h1 {
         -webkit-transform: scale(1.0);
       }
     }
+
+html, body, #map-canvas {
+    height: 90%;
+    margin: 0px;
+    padding: 0px;
+}
+
+input[type=range] {
+    width: 90%;
+}

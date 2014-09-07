@@ -57,6 +57,9 @@ function showEnd(restaurant) {
         $('#end').remove();
         start();
     });
+    $('#stats').on('click', function() {
+        $('body').append(map());
+    });
 
     $('.top').bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", 
         function() {
@@ -152,6 +155,9 @@ var question = Handlebars.compile($("#question-temp").html());
 var main = Handlebars.compile($("#main-temp").html());
 var end = Handlebars.compile($("#end-temp").html());
 var add = Handlebars.compile($("#add-temp").html());
+
+var map = Handlebars.compile($("#map-temp").html());
+
 function showMain() {
     $('body').append(main);
     $('#start').on('click', function() {

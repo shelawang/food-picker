@@ -17,6 +17,8 @@
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="scripts/handlebars.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+        <script src="scripts/map.js"></script>
     </head>
     <body>
         <div class="spinner">
@@ -69,10 +71,11 @@
 
                 </p>
             </div>
-            <button type="button" class="btn btn-default">Stats</button>
+            <button id="stats" type="button" class="btn btn-default">Stats</button>
             <button id="again" type="button" class="btn btn-default">Again!</button>
         </div>
     </script>
+
     <script id="add-temp" type="text/x-handlebars-template">
         <div id="add">
           <h2>
@@ -83,6 +86,27 @@
 
         </div>
     </script>
+
+    <script id="map-temp" type="text/x-handlebars-template">
+
+        <div id="map">
+            <div id="map-canvas">
+                <div id="options">
+                    <center>
+                        <input type="range" id="slider" min="0" max="10" value="0"><br/>
+                        <span id="option1">Move the slider to see how your options changed!</span><br/>
+                        <span id="option2"></span><br/>
+
+                        <br/><br/>
+
+                        <button id="restart">Start over</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+        
+    </script>
+
     <script src="scripts/logic.js"></script>
     <script src="scripts/ui.js"></script>
 </html>
