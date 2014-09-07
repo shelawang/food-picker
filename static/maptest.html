@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A thing for testing maps</title>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        <style>
+            html, body, #map-canvas {
+                height: 90%;
+                margin: 0px;
+                padding: 0px
+            }
+            input[type=range] {
+                width: 90%;
+            }
+        </style>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+        <script src="map.js"></script>
+    </head>
+    <body>
+        <div id="map-canvas"></div>
+        <div id="options">
+            <center>
+                <input type="range" id="slider" min="0" max="10" value="0"><br/>
+                <span id="option1">Move the slider to see how your options changed!</span><br/>
+                <span id="option2"></span><br/>
+
+                <br/><br/>
+
+                <button id="restart">Start over</button>
+            </center>
+        </div>
+    </body>
+</html>
