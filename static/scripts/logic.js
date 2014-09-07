@@ -135,6 +135,7 @@ function questionNode(candidates) {
 
 };
 
+fpObj(10, 10, 37.77493, -122.419415, 'vegetarian');
 
 
 function updateTable(table, candidate) {
