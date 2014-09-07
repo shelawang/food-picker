@@ -69,6 +69,11 @@ function initialize(tree) {
     numQuestions = getNumQuestions(tree);
 
     alert(numQuestions);
+    if (window.jQuery) {
+        alert("jQuery OK");
+    } else {
+        alert(":(((");
+    }
 
     // Set the slider to match the number of questions
     $("#slider").attr("max", numQuestions);
