@@ -15,6 +15,14 @@ a {
     color: #fff;
 }
 
+a:hover{
+    color: #fff;
+}
+
+a:visited {
+    color: #fff;
+}
+
 .card {
     transition: left 0.5s, right 0.5s, top 0.5s, bottom 0.5s;
     position: relative;

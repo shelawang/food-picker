@@ -49,7 +49,8 @@ function showEnd(restaurant) {
         name: restaurant.name,
         rating: 1,
         phone: restaurant.phone,
-        address: restaurant.location.address[0]
+        address: restaurant.location.address[0],
+        zip: restaurant.location.postal_code
     }));
 
     $('#again').on('click', function() {
@@ -175,7 +176,6 @@ function start() {
 
 $(document).ready(function() {
     start();
-    
 });
 
 document.ontouchmove = function(event){
