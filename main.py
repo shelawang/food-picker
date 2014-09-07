@@ -46,13 +46,13 @@ def api_call():
     ne_long = str(float(long_) + delta_long)
 
     term = 'food'
-    if request.args.has_key('cat'):
-      cat = request.args.get('cat')
-      print request.args.get('cat')
-      encoded_params = "term={0}&bounds={1},{2}|{3},{4}&category_filter={5}&limit={6}".format(term, sw_lat, sw_long, ne_lat, ne_long, cat, limit)
-    else:
-      print 'donkeykong'
-      encoded_params = "term={0}&bounds={1},{2}|{3},{4}&limit={5}".format(term, sw_lat, sw_long, ne_lat, ne_long, limit)
+    # if request.args.has_key('cat'):
+    #   cat = request.args.get('cat')
+    #   print request.args.get('cat')
+    encoded_params = "term={0}&bounds={1},{2}|{3},{4}&limit={5}".format(term, sw_lat, sw_long, ne_lat, ne_long, limit)
+    # else:
+    #   print 'donkeykong'
+    #   encoded_params = "term={0}&bounds={1},{2}|{3},{4}&limit={5}".format(term, sw_lat, sw_long, ne_lat, ne_long, limit)
     
     url = 'http://{0}{1}?{2}'.format(host, path, encoded_params)
 
@@ -84,4 +84,3 @@ def api_call():
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
-    # app.run(debug=True)

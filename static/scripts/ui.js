@@ -162,9 +162,8 @@ function showMain() {
     $('body').append(main);
     $('#start').on('click', function() {
         $('#main').remove();
-        start();
+        start();        
     });
-
 }
 
 function start() {
@@ -173,7 +172,7 @@ function start() {
             tree = questionTree(16, 5, position.coords.latitude, position.coords.longitude);
             curTreeNode = tree;
             addQ();
-    
+            
             $('.old').removeClass('old').addClass('cur');
         });
     }
@@ -190,14 +189,14 @@ function start() {
     // mp3.play();
 }
 
-function isIOS() {
-    var userAgent = window.navigator.userAgent.toLowerCase();
-    return /iphone|ipad|ipod/.test( userAgent );
-};
+// function isIOS() {
+//     var userAgent = window.navigator.userAgent.toLowerCase();
+//     return /iphone|ipad|ipod/.test( userAgent );
+// };
 
-function isStandalone() {
-    return ( isIOS() && window.navigator.standalone );
-};
+// function isStandalone() {
+//     return ( isIOS() && window.navigator.standalone );
+// };
 
 // window.onload = function () {
 //     if( isStandalone() || !isIOS() ) { //either ios+standalone or not ios
@@ -210,14 +209,7 @@ function isStandalone() {
 // };
 
 $(document).ready(function() {
-    if( isStandalone() || !isIOS() ) { //either ios+standalone or not ios
-        //start app
-        showMain();
-    } else {
-        //display add to homescreen page
-        $('body').append(add());
-        // alert('add to homescreen');
-    };
+    showMain();
 });
 
 document.ontouchmove = function(event){
