@@ -71,6 +71,12 @@ function initialize(tree) {
     alert(tree);
     alert(Object.keys(tree));
 
+    alert(tree.question);
+    alert(tree.answer);
+    alert(tree.yes);
+    alert(tree.no);
+    alert(tree.candidates);
+
     // Set the slider to match the number of questions
     $("#slider").attr("max", numQuestions);
 
