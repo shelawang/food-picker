@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Food Picker</title>
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="format-detection" content="telephone=no">
+        <link rel="apple-touch-icon" href="icon.png">
+        <meta name="format-detection" content="telephone=yes">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="app.css">
@@ -13,9 +16,13 @@
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="scripts/handlebars.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
     </head>
     <body>
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
     </body>
     <script id="question-temp" type="text/x-handlebars-template">
         <div id="question" class="old">
@@ -54,10 +61,12 @@
             </div>
             <div id="info">
                 <p>
-                    <span class="glyphicon glyphicon-earphone"></span> {{ phone }}
+                    <span class="glyphicon glyphicon-earphone"></span> <a href="tel:{{ phone }}">{{ phone }}</a>
+
                 </p>
                 <p>
-                    <span class="glyphicon glyphicon-home"></span> {{ address }}
+                    <span class="glyphicon glyphicon-home"></span> 
+                    <a href="http://maps.apple.com/?q={{ address }}">{{ address }}</a>
                 </p>
             </div>
             <button type="button" class="btn btn-default">Stats</button>
