@@ -144,7 +144,7 @@ function transition() {
 var question = Handlebars.compile($("#question-temp").html());
 var main = Handlebars.compile($("#main-temp").html());
 var end = Handlebars.compile($("#end-temp").html());
-
+var add = Handlebars.compile($("#add-temp").html());
 function showMain() {
     $('body').append(main);
 
@@ -174,8 +174,34 @@ function start() {
     // mp3.play();
 }
 
+function isIOS() {
+    var userAgent = window.navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test( userAgent );
+};
+
+function isStandalone() {
+    return ( isIOS() && window.navigator.standalone );
+};
+
+// window.onload = function () {
+//     if( isStandalone() || !isIOS() ) { //either ios+standalone or not ios
+//         //start app
+//         alert('derp');
+//     } else {
+//         //display add to homescreen page
+//         alert('add to homescreen');
+//     };
+// };
+
 $(document).ready(function() {
-    start();
+    if( isStandalone() || !isIOS() ) { //either ios+standalone or not ios
+        //start app
+        start();
+    } else {
+        //display add to homescreen page
+        $('body').append(add());
+        // alert('add to homescreen');
+    };
 });
 
 document.ontouchmove = function(event){
