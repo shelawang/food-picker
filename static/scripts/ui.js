@@ -147,7 +147,10 @@ var end = Handlebars.compile($("#end-temp").html());
 var add = Handlebars.compile($("#add-temp").html());
 function showMain() {
     $('body').append(main);
-
+    $('#start').on('click', function() {
+        $('#main').remove();
+        start();
+    });
 
 }
 
@@ -196,7 +199,7 @@ function isStandalone() {
 $(document).ready(function() {
     if( isStandalone() || !isIOS() ) { //either ios+standalone or not ios
         //start app
-        start();
+        showMain();
     } else {
         //display add to homescreen page
         $('body').append(add());
