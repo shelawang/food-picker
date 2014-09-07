@@ -70,15 +70,10 @@ function initialize(tree) {
 
     alert(numQuestions);
 
-    alert(tree);
-    alert(Object.keys(tree));
-
-    alert(tree.question);
-    alert(tree.yes);
-    alert(tree.candidates);
-
     // Set the slider to match the number of questions
     $("#slider").attr("max", numQuestions);
+
+    alert($("#slider").attr());
 
     // Create markers for each restaurant address
     if (!('candidates' in tree)) {
@@ -86,7 +81,7 @@ function initialize(tree) {
     }
 
     var restaurants = tree.candidates;
-    createMarkersFromAddress(restaurants, 0);
+    // createMarkersFromAddress(restaurants, 0);
 
     // Display the map
     var mapOptions = {
@@ -110,7 +105,7 @@ function initialize(tree) {
     map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
 
-    addListeners();
+    // addListeners();
 }
 
 /*
