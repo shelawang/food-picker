@@ -226,7 +226,7 @@ h1 {
     }
 
 html, body, #map-canvas {
-    height: 100px;
+    height: 50%;
     margin: 0px;
     padding: 0px;
 }

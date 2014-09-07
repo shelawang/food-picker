@@ -68,13 +68,8 @@ function initialize(tree) {
     // Traverse the tree to find how many questions were asked
     numQuestions = getNumQuestions(tree);
 
-    alert(numQuestions);
-    alert($("#slider"));
-
     // Set the slider to match the number of questions
     $("#slider").attr("max", numQuestions);
-
-    alert($("#slider").attr());
 
     // Create markers for each restaurant address
     if (!('candidates' in tree)) {
@@ -82,7 +77,7 @@ function initialize(tree) {
     }
 
     var restaurants = tree.candidates;
-    // createMarkersFromAddress(restaurants, 0);
+    createMarkersFromAddress(restaurants, 0);
 
     // Display the map
     var mapOptions = {
@@ -106,7 +101,7 @@ function initialize(tree) {
     map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
 
-    // addListeners();
+    addListeners();
 }
 
 /*
@@ -170,7 +165,9 @@ function createMarkersFromAddress(restaurants, counter) {
             map.setCenter(bounds.getCenter());
             map.fitBounds(bounds);
         } else {
-            createMarkersFromAddress(restaurants, counter+1);
+            setTimeout(function() {
+                createMarkersFromAddress(restaurants, counter+1)
+            }, 100);
         }
     });
 }
@@ -206,6 +203,9 @@ function addListeners() {
         var onlyOldCandidates = onlyInFirstArray(oldCandidates, currentCandidates);
         var onlyCurrentCandidates = onlyInFirstArray(currentCandidates, oldCandidates);
 
+        console.log(onlyOldCandidates);
+        console.log(onlyCurrentCandidates);
+
         // if (currentCandidates.length == 1) {
         //     currentCandidates[0].marker.setAnimation(google.maps.Animation.BOUNCE);
         // } else {
@@ -217,8 +217,11 @@ function addListeners() {
             onlyCurrentCandidates[i].marker.setVisible(true);
         }
         // Set all markers in olyOldCandidates to not visible
-        for (var i=0; i < onlyOldCandidates.length; i++) {
-            onlyOldCandidates[i].marker.setVisible(false);
+        for (var j=0; j < onlyOldCandidates.length; j++) {
+            console.log(onlyOldCandidates);
+            log(onlyOldCandidates[i]);
+            log(onlyOldCandidates[i].marker);
+            onlyOldCandidates[j].marker.setVisible(false);
         }
 
         oldStep = currentStep;
