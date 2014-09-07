@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="app.css">
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -14,16 +18,16 @@
     <body>
         
     </body>
-    <script id="entry-template" type="text/x-handlebars-template">
+    <script id="question-temp" type="text/x-handlebars-template">
         <div id="question" class="old">
             <div class="top card">
                 <div class="answer">
-                    Answer 1
+                    {{ q1 }}
                 </div>
             </div>
             <div class="bottom card">
                 <div class="answer">
-                    Answer 2
+                    {{ q2 }}
                 </div>
             </div>
             <div id="counter">
@@ -32,5 +36,25 @@
             </div>
         </div>
     </script>
+
+    <script id="main-temp" type="text/x-handlebars-template">
+        <div id="main">
+            <div id="price" class="btn-group">
+              <button type="button" class="btn btn-default">$</button>
+              <button type="button" class="btn btn-default">$$</button>
+              <button type="button" class="btn btn-default">$$$</button>
+              <button type="button" class="btn btn-default">$$$$</button>
+            </div>
+        </div>
+    </script>
+
+    <script id="end-temp" type="text/x-handlebars-template">
+        <div id="end">
+            <h1>
+                {{ restaurant }}
+            </h1>
+        </div>
+    </script>
+    <script src="scripts/logic.js"></script>
     <script src="scripts/ui.js"></script>
 </html>
