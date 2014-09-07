@@ -65,6 +65,8 @@ Arguments:
               answer - The option that the user picked
 */
 function initialize(tree) {
+    alert("calling initialize");
+
     // Traverse the tree to find how many questions were asked
     numQuestions = getNumQuestions(tree);
 
