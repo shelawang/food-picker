@@ -92,7 +92,7 @@ h1 {
     top: 50%;
     margin-top: -3px;
     background-color: #fff;
-    transition: width 5s linear;
+    transition: width 4s linear;
 }
 
 #main {
