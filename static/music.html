@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <audio id="audio">
+    <source src="https://dl.dropboxusercontent.com/u/89838531/lesos.m4a" type="audio/mpeg"/>
+</audio>
+<button id="button">Play</button>
+<script type='text/javascript'> 
+var button = document.getElementById('button');
+var audio = document.getElementById('audio');
+var onClick = function() {
+    audio.play(); // audio will load and then play
+};
+button.addEventListener('click', onClick, false);  
+</script>
+</body>
+</html>

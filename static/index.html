@@ -45,17 +45,15 @@
     </script>
     <script id="main-temp" type="text/x-handlebars-template">
         <div id="main">
-            <div id="price" class="btn-group">
-              <button type="button" class="btn btn-default">$</button>
-              <button type="button" class="btn btn-default">$$</button>
-              <button type="button" class="btn btn-default">$$$</button>
-              <button type="button" class="btn btn-default">$$$$</button>
-            </div>
+            <div class="title">
+                <h2>Food Picker</h2>
+            </div> 
+            <button id="start"type="button" class="btn btn-default">Start</button>
         </div>
     </script>
     <script id="end-temp" type="text/x-handlebars-template">
         <div id="end">
-            <div id="title">
+            <div class="title">
                 <h2>
                     {{ name }}
                 </h2>
@@ -73,6 +71,16 @@
             </div>
             <button type="button" class="btn btn-default">Stats</button>
             <button id="again" type="button" class="btn btn-default">Again!</button>
+        </div>
+    </script>
+    <script id="add-temp" type="text/x-handlebars-template">
+        <div id="add">
+          <h2>
+            Please Add to Home Screen
+            {{ add }}
+          </h2>
+          <img src = "add.png">
+
         </div>
     </script>
     <script src="scripts/logic.js"></script>
