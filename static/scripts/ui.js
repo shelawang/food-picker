@@ -53,7 +53,7 @@ function showEnd(restaurant) {
     }));
 
     $('#again').on('click', function() {
-        $('body').empty();
+        $('#end').remove();
         start();
     });
 }
