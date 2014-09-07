@@ -45,12 +45,22 @@ function next() {
 
 function showEnd(restaurant) {
     $('body').append(end({restaurant: restaurant}));
+    $('#endRestart').on('click', function() {
+        start(); // TODO: replace with showMain();
+    });
+    $('#showMap').on('click', function() {
+        showMap(tree);
+    });
+}
+
+function showMap(tree) {
+    $('body').append(map);
 }
 
 function addQ() {
     if (curTreeNode.candidates.length == 1) {
         showEnd(curTreeNode.candidates[0].name);
-    } 
+    }
     $('body')
         .append(question({q1: curTreeNode.question, q2: "No " + curTreeNode.question}));
 
@@ -95,7 +105,7 @@ function addQ() {
         startCounter();
     });
 
-    top.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", 
+    top.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd",
         function() {
             $('.cur').remove();
             $('.old').addClass('cur').removeClass('old');
@@ -129,6 +139,7 @@ function transition() {
 var question = Handlebars.compile($("#question-temp").html());
 var main = Handlebars.compile($("#main-temp").html());
 var end = Handlebars.compile($("#end-temp").html());
+var map = Handlebars.compile($("#map-temp").html());
 
 function showMain() {
     $('body').append(main);

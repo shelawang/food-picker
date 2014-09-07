@@ -6,7 +6,7 @@ var updateTable = function(table, candidate) {
     for (var i = 0; i < candidate.categories.length; i++) {
         var categoryName = candidate.categories[i][0];
         if (table.hasOwnProperty(categoryName)) {
-            table[categoryName] += 1;    
+            table[categoryName] += 1;
         } else {
             table[categoryName] = 1;
         }
@@ -42,7 +42,7 @@ var questionTree = function(limit, radius, lat, long_, cat) {
         dataType: "json",
         url: "http://food-picker.herokuapp.com/request",
         data: data,
-        success: function(result) {        
+        success: function(result) {
             businesses = result.businesses;
         },
         async: false
@@ -98,9 +98,9 @@ function questionNode(candidates) {
         }
 
     } else {
-    
+
         flag = 'category';
-    
+
         var categoryList = [];
         var minDiff = totalCount;
         for (var key in table) {
@@ -113,10 +113,10 @@ function questionNode(candidates) {
                 categoryList.push(key)
             }
         }
-    
+
         var categoryRand = (Math.random() * categoryList.length) | 0;
         question = categoryList[categoryRand];
-    
+
         for (var k = 0; k < totalCount; k++) {
             if (containsCategory(question, candidates[k])) {
                 yes.push(candidates[k]);
@@ -141,7 +141,7 @@ function updateTable(table, candidate) {
     for (var i = 0; i < candidate.categories.length; i++) {
         var categoryName = candidate.categories[i][0];
         if (table.hasOwnProperty(categoryName)) {
-            table[categoryName] += 1;    
+            table[categoryName] += 1;
         } else {
             table[categoryName] = 1;
         }
