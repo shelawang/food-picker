@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
         <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="app.css">
@@ -13,10 +13,13 @@
         <script src="scripts/handlebars.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-
     </head>
     <body>
 
+=======
+    </head>
+    <body>
+>>>>>>> 3e3a7dd3d16c9ea8d4b716d5b699f7a676287ff5
     </body>
     <script id="question-temp" type="text/x-handlebars-template">
         <div id="question" class="old">
@@ -48,9 +51,21 @@
     </script>
     <script id="end-temp" type="text/x-handlebars-template">
         <div id="end">
-            <h1>
-                {{ restaurant }}
-            </h1>
+            <div id="title">
+                <h2>
+                    {{ name }}
+                </h2>
+            </div>
+            <div id="info">
+                <p>
+                    <span class="glyphicon glyphicon-earphone"></span> {{ phone }}
+                </p>
+                <p>
+                    <span class="glyphicon glyphicon-home"></span> {{ address }}
+                </p>
+            </div>
+            <button type="button" class="btn btn-default">Stats</button>
+            <button id="again" type="button" class="btn btn-default">Again!</button>
         </div>
     </script>
     <script src="scripts/logic.js"></script>
