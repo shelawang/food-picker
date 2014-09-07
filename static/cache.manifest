@@ -1,0 +1,10 @@
+CACHE MANIFEST
+
+# Version 0.1
+
+NETWORK:
+*
+
+CACHE:
+index.html
+scripts/map.js
