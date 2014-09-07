@@ -48,7 +48,7 @@
         <div id="main">
             <div class="title">
                 <h2>Food Picker</h2>
-            </div> 
+            </div>
             <button id="start"type="button" class="btn btn-default">Start</button>
         </div>
     </script>
@@ -65,7 +65,7 @@
 
                 </p>
                 <p>
-                    <span class="glyphicon glyphicon-home"></span> 
+                    <span class="glyphicon glyphicon-home"></span>
                     <a href="http://maps.apple.com/?q={{ address }} {{ zip }}">{{ address }}</a>
 
                 </p>
@@ -89,21 +89,20 @@
     <script id="map-temp" type="text/x-handlebars-template">
 
         <div id="map">
-            <div id="map-canvas">
-                <div id="options">
-                    <center>
-                        <input type="range" id="slider" min="0" max="10" value="0"><br/>
-                        <span id="option1">Move the slider to see how your options changed!</span><br/>
-                        <span id="option2"></span><br/>
+            <div id="map-canvas"></div>
+            <div id="options">
+                <center>
+                    <input type="range" id="slider" min="0" max="10" value="0"><br/>
+                    <span id="option1">Move the slider to see how your options changed!</span><br/>
+                    <span id="option2"></span><br/>
 
-                        <br/><br/>
+                    <br/><br/>
 
-                        <button id="restart">Start over</button>
-                    </center>
-                </div>
+                    <button id="restart">Start over</button>
+                </center>
             </div>
         </div>
-        
+
     </script>
 
     <script src="scripts/logic.js"></script>

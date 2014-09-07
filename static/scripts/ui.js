@@ -44,7 +44,7 @@ function next() {
 
 function showEnd(restaurant) {
     clearInterval(curInterval);
-    
+
     $('body').append(end({
         name: restaurant.name,
         rating: 1,
@@ -59,9 +59,10 @@ function showEnd(restaurant) {
     });
     $('#stats').on('click', function() {
         $('body').append(map());
+        initialize(tree);
     });
 
-    $('.top').bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", 
+    $('.top').bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd",
         function() {
             $("#question").remove();
         }
@@ -73,7 +74,7 @@ function addQ() {
     if (curTreeNode.candidates.length == 1) {
         showEnd(curTreeNode.candidates[0]);
         return;
-    } 
+    }
     $('body')
         .append(question({q1: curTreeNode.question, q2: "No " + curTreeNode.question}));
 
@@ -116,7 +117,7 @@ function addQ() {
         next();
     });
 
-    top.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", 
+    top.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd",
         function() {
 
             $('.cur').remove();
@@ -162,7 +163,7 @@ function showMain() {
     $('body').append(main);
     $('#start').on('click', function() {
         $('#main').remove();
-        start();        
+        start();
     });
 }
 
@@ -172,14 +173,14 @@ function start() {
             tree = questionTree(16, 5, position.coords.latitude, position.coords.longitude);
             curTreeNode = tree;
             addQ();
-            
+
             $('.old').removeClass('old').addClass('cur');
         });
     }
     else {
         alert("No location support");
     }
-    
+
 
     // Music
     // var mp3 = document.createElement("audio");

@@ -231,8 +231,8 @@ function onlyInFirstArray(a, b) {
 }
 
 // Load the map once the window has loaded
-google.maps.event.addDomListener(window, 'load',
-    function() {
-        initialize(TEST_TREE);
-    }
-);
+// google.maps.event.addDomListener(window, 'load',
+//     function() {
+//         initialize(TEST_TREE);
+//     }
+// );
