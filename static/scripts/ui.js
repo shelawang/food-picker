@@ -43,8 +43,8 @@ function next() {
 }
 
 function showEnd(restaurant) {
-    $("#question").remove();
     clearInterval(curInterval);
+    
     $('body').append(end({
         name: restaurant.name,
         rating: 1,
@@ -57,6 +57,13 @@ function showEnd(restaurant) {
         $('#end').remove();
         start();
     });
+
+    $('.top').bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", 
+        function() {
+            $("#question").remove();
+        }
+    );
+    transition();
 }
 
 function addQ() {
