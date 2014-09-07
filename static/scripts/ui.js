@@ -147,23 +147,27 @@ var end = Handlebars.compile($("#end-temp").html());
 var add = Handlebars.compile($("#add-temp").html());
 function showMain() {
     $('body').append(main);
-
-
-}
-
-function start() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
-            tree = questionTree(16, 5, position.coords.latitude, position.coords.longitude);
-            curTreeNode = tree;
-            addQ();
-    
-            $('.old').removeClass('old').addClass('cur');
+            $('#start').on('click', function() {
+                $('#main').remove();
+                start(position.coords.latitude, position.coords.longitude);
+            });
         });
     }
     else {
         alert("No location support");
     }
+    
+
+}
+
+function start(latitude, longitude) {
+    tree = questionTree(16, 5, latitude, longitude);
+    curTreeNode = tree;
+    addQ();
+    
+    $('.old').removeClass('old').addClass('cur');
     
 
     // Music
@@ -194,14 +198,8 @@ function isStandalone() {
 // };
 
 $(document).ready(function() {
-    if( isStandalone() || !isIOS() ) { //either ios+standalone or not ios
-        //start app
-        start();
-    } else {
-        //display add to homescreen page
-        $('body').append(add());
-        // alert('add to homescreen');
-    };
+
+    showMain();
 });
 
 document.ontouchmove = function(event){
