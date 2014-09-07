@@ -107,12 +107,14 @@ function addQ() {
     // Listeners
     top.on('click', function() {
         clearInterval(curInterval);
+        curTreeNode.answer = "yes";
         curTreeNode = curTreeNode.yes;
         next();
     });
 
     bottom.on('click', function() {
         clearInterval(curInterval);
+        curTreeNode.answer = "no";
         curTreeNode = curTreeNode.no;
         next();
     });
