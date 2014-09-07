@@ -23,15 +23,6 @@ function startCounter() {
             count--;
         }
         else {
-            // randomly select
-            var rand = Math.random() * 1 | 0;
-            if (rand == 0) {
-                curTreeNode = curTreeNode.yes;
-            }
-            else {
-                curTreeNode = curTreeNode.no;
-            }
-
             next();
             count = TIME;
         }
