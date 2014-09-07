@@ -13,7 +13,7 @@ var tree;
 var curTreeNode;
 
 function startCounter() {
-    var TIME = 3;
+    var TIME = 5;
     var count = TIME;
     curInterval = setInterval(function() {
         if (count > 0) {
@@ -40,16 +40,27 @@ function startCounter() {
 
 function next() {
     addQ();
-    transition();
 }
 
 function showEnd(restaurant) {
-    $('body').append(end({restaurant: restaurant}));
+    clearInterval(curInterval);
+    $('body').append(end({
+        name: restaurant.name,
+        rating: 1,
+        phone: restaurant.phone,
+        address: restaurant.location.address[0]
+    }));
+
+    $('#again').on('click', function() {
+        $('body').empty();
+        start();
+    });
 }
 
 function addQ() {
     if (curTreeNode.candidates.length == 1) {
-        showEnd(curTreeNode.candidates[0].name);
+        showEnd(curTreeNode.candidates[0]);
+        return;
     } 
     $('body')
         .append(question({q1: curTreeNode.question, q2: "No " + curTreeNode.question}));
@@ -85,14 +96,12 @@ function addQ() {
         clearInterval(curInterval);
         curTreeNode = curTreeNode.yes;
         next();
-        startCounter();
     });
 
     bottom.on('click', function() {
         clearInterval(curInterval);
         curTreeNode = curTreeNode.no;
         next();
-        startCounter();
     });
 
     top.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", 
@@ -101,6 +110,9 @@ function addQ() {
             $('.old').addClass('cur').removeClass('old');
         }
     );
+
+    transition();
+    startCounter();
 }
 
 // Do a random transition to the next question
@@ -138,23 +150,22 @@ function showMain() {
 
 function start() {
     addQ();
+    
     $('.old').removeClass('old').addClass('cur');
 
-    startCounter();
-
     // Music
-    var mp3 = document.createElement("audio");
-    mp3.setAttribute('src', 'runamok.mp3');
-    mp3.load();
-    document.documentElement.appendChild(mp3);
-    mp3.play();
+    // var mp3 = document.createElement("audio");
+    // mp3.setAttribute('src', 'runamok.mp3');
+    // mp3.load();
+    // document.documentElement.appendChild(mp3);
+    // mp3.play();
 }
 
 $(document).ready(function() {
     // showMain();
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
-            tree = questionTree(10, 10, position.coords.latitude, position.coords.longitude);
+            tree = questionTree(16, 5, position.coords.latitude, position.coords.longitude);
             curTreeNode = tree;
             start();
         });
