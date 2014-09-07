@@ -13,7 +13,7 @@ var tree;
 var curTreeNode;
 
 function startCounter() {
-    var TIME = 5;
+    var TIME = 4;
     var count = TIME;
     curInterval = setInterval(function() {
         if (count > 0) {
@@ -23,6 +23,15 @@ function startCounter() {
             count--;
         }
         else {
+            // randomly select
+            var rand = Math.random() * 1 | 0;
+            if (rand == 0) {
+                curTreeNode = curTreeNode.yes;
+            }
+            else {
+                curTreeNode = curTreeNode.no;
+            }
+            clearInterval(curInterval);
             next();
             count = TIME;
         }
@@ -34,6 +43,7 @@ function next() {
 }
 
 function showEnd(restaurant) {
+    $("#question").remove();
     clearInterval(curInterval);
     $('body').append(end({
         name: restaurant.name,
@@ -97,6 +107,7 @@ function addQ() {
 
     top.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", 
         function() {
+
             $('.cur').remove();
             $('.old').addClass('cur').removeClass('old');
         }
@@ -112,7 +123,7 @@ function transition() {
     winWidth = $window.width();
     var rand = Math.random() * 3 | 0;
 
-    $('#counter').fadeOut(400);
+    $('.cur #counter').fadeOut(400);
     $('.cur .p-bar').fadeOut(400);
 
     if (rand == 0) {
@@ -140,9 +151,19 @@ function showMain() {
 }
 
 function start() {
-    addQ();
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            tree = questionTree(16, 5, position.coords.latitude, position.coords.longitude);
+            curTreeNode = tree;
+            addQ();
     
-    $('.old').removeClass('old').addClass('cur');
+            $('.old').removeClass('old').addClass('cur');
+        });
+    }
+    else {
+        alert("No location support");
+    }
+    
 
     // Music
     // var mp3 = document.createElement("audio");
@@ -153,17 +174,8 @@ function start() {
 }
 
 $(document).ready(function() {
-    // showMain();
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            tree = questionTree(16, 5, position.coords.latitude, position.coords.longitude);
-            curTreeNode = tree;
-            start();
-        });
-    }
-    else {
-        alert("No location support");
-    }
+    start();
+    
 });
 
 document.ontouchmove = function(event){

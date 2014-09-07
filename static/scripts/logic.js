@@ -135,9 +135,6 @@ function questionNode(candidates) {
 
 };
 
-fpObj(10, 10, 37.77493, -122.419415, 'vegetarian');
-
-
 function updateTable(table, candidate) {
     for (var i = 0; i < candidate.categories.length; i++) {
         var categoryName = candidate.categories[i][0];
